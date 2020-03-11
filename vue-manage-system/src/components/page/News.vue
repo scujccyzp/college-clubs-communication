@@ -27,37 +27,19 @@
                 @selection-change="handleSelectionChange"
             >
                 <el-table-column type="selection" width="55" align="center"></el-table-column>
-                <el-table-column prop="activity_id" label="ID" width="55" align="center"></el-table-column>
-                <el-table-column prop="activity_name" label="活动名"></el-table-column>
-                <el-table-column prop="activity_intro" show-overflow-tooltip label="活动简介"></el-table-column>
+                <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
+                <el-table-column prop="name" label="活动名"></el-table-column>
+                <el-table-column label="活动简介"></el-table-column>
 
-                <el-table-column prop="activity_address" label="活动地点"></el-table-column>
+                <el-table-column label="活动地址"></el-table-column>
 
-                <el-table-column prop="activity_time" label="活动时间"></el-table-column>
+                <el-table-column label="活动时间"></el-table-column>
 
-                <el-table-column label="banner(查看大图)" align="center">
-                    <template slot-scope="scope">
-                        <el-image
-                            class="table-td-thumb"
-                            :src="$host + scope.row.activity_imgs"
-                            :preview-src-list="[$host + scope.row.activity_imgs]"
-                        ></el-image>
-                    </template>
-                </el-table-column>
+                <el-table-column label="活动banner" align="center"></el-table-column>
 
-                <el-table-column label="是否截止">
-                    <template slot-scope="scope">
-                        <p v-if="scope.row.isactive == 1">报名中</p>
-                        <p v-else>已截止</p>
-                    </template>
-                </el-table-column>
+                <el-table-column label="是否截至"></el-table-column>
 
-                <el-table-column label="是否热门">
-                    <template slot-scope="scope">
-                        <p v-if="scope.row.ishot == 1">是</p>
-                        <p v-else>否</p>
-                    </template>
-                </el-table-column>
+                <el-table-column label="是否热门"></el-table-column>
                 <el-table-column label="操作" width="180" align="center">
                     <template slot-scope="scope">
                         <el-button
@@ -130,14 +112,7 @@ export default {
     },
     methods: {
         // 获取 easy-mock 的模拟数据
-        getData() {
-            this.axios.get('api/activity/allactivity').then(res => {
-                if (res.data.state == 200) {
-                    console.log(res.data.data);
-                    this.tableData = res.data.data;
-                }
-            });
-        },
+        getData() {},
         // 触发搜索按钮
         handleSearch() {
             this.$set(this.query, 'pageIndex', 1);

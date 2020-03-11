@@ -35,9 +35,9 @@ export default new Router({
                     meta: { title: '活动管理' }
                 },
                 {
-                    path: '/tabs',
-                    component: () => import(/* webpackChunkName: "tabs" */ '../components/page/Tabs.vue'),
-                    meta: { title: 'tab选项卡' }
+                    path: '/news',
+                    component: () => import(/* webpackChunkName: "table" */ '../components/page/News.vue'),
+                    meta: { title: '新闻管理' }
                 },
                 {
                     path: '/form',
@@ -48,7 +48,7 @@ export default new Router({
                     // 富文本编辑器组件
                     path: '/editor',
                     component: () => import(/* webpackChunkName: "editor" */ '../components/page/VueEditor.vue'),
-                    meta: { title: '富文本编辑器' }
+                    meta: { title: '发布新闻' }
                 },
                 {
                     // 图片上传组件

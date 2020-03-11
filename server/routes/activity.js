@@ -2,8 +2,11 @@ var express = require('express');
 var router = express.Router();
 const activityCtrl = require("../controllers/activityCtrl")
 
-//获取所有活动
+//获取活动列表
 router.get('/activitylist', activityCtrl.activityList);
+
+//获取所有活动
+router.get('/allactivity', activityCtrl.allActivity);
 
 //根据社团id获取活动
 router.get('/clubactivity', activityCtrl.clubActivity);

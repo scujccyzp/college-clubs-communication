@@ -77,9 +77,9 @@ export default {
                     title: '活动管理'
                 },
                 {
-                    icon: 'el-icon-lx-copy',
-                    index: 'tabs',
-                    title: 'tab选项卡'
+                    icon: 'el-icon-lx-cascades',
+                    index: 'news',
+                    title: '新闻管理'
                 },
                 {
                     icon: 'el-icon-lx-calendar',
@@ -89,20 +89,6 @@ export default {
                         {
                             index: 'form',
                             title: '基本表单'
-                        },
-                        {
-                            index: '3-2',
-                            title: '三级菜单',
-                            subs: [
-                                {
-                                    index: 'editor',
-                                    title: '富文本编辑器'
-                                }
-                            ]
-                        },
-                        {
-                            index: 'upload',
-                            title: '文件上传'
                         }
                     ]
                 },

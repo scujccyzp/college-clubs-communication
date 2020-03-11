@@ -5,6 +5,10 @@ module.exports = {
     var sql = `SELECT a.activity_name, a.activity_imgs, a.activity_id, a.isactive, b.club_name FROM club_activity a LEFT JOIN clubs b ON a.club_id = b.club_id;`;
     db.connect(sql, options, callback);
   },
+  allActivity:(options, callback) => {
+    var sql = `SELECT * FROM club_activity;`;
+    db.connect(sql, options, callback);
+  },
   clubActivity:(options, callback) => {
     var sql = `SELECT a.activity_name, a.activity_imgs, a.activity_id, a.isactive, b.club_name FROM club_activity a LEFT JOIN clubs b ON a.club_id = b.club_id WHERE a.club_id = ?;`;
     db.connect(sql, options, callback);

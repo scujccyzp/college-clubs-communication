@@ -35,7 +35,7 @@
                         <el-image
                             class="table-td-thumb"
                             :src="$host + scope.row.club_avatar"
-                            :preview-src-list="[scope.row.thumb]"
+                            :preview-src-list="[$host + scope.row.club_avatar]"
                         ></el-image>
                     </template>
                 </el-table-column>
@@ -53,14 +53,8 @@
                 </el-table-column>
                 <el-table-column label="是否热门" align="center">
                     <template slot-scope="scope">
-                        <el-tag
-                            :type="'success'"
-                            v-if="scope.row.ishot === 1"
-                        >是</el-tag>
-                        <el-tag
-                            :type="'danger'"
-                            v-if="scope.row.ishot === 0"
-                        >否</el-tag>
+                        <el-tag :type="'success'" v-if="scope.row.ishot === 1">是</el-tag>
+                        <el-tag :type="'danger'" v-if="scope.row.ishot === 0">否</el-tag>
                     </template>
                 </el-table-column>
 
@@ -69,8 +63,8 @@
                         <el-button
                             type="text"
                             icon="el-icon-edit"
-                            @click="handleEdit(scope.$index, scope.row)"
-                        >编辑</el-button>
+                            @click="news(scope.row.club_id, scope.row.club_name)"
+                        >发布新闻</el-button>
                         <el-button
                             type="text"
                             icon="el-icon-delete"
@@ -119,7 +113,7 @@ export default {
             query: {
                 address: '',
                 name: '',
-                pageIndex: 2,
+                pageIndex: 1,
                 pageSize: 5
             },
             clubs: [],
@@ -129,7 +123,11 @@ export default {
             pageTotal: 0,
             form: {},
             idx: -1,
-            id: -1
+            id: -1,
+            clubNews: {
+                clubId: 0,
+                clubName: ''
+            }
         };
     },
     created() {
@@ -142,17 +140,16 @@ export default {
                 console.log(res.data);
                 this.pageTotal = res.data.data[0].num;
             });
-            
+
             //获取一页数据
-            var i = (this.query.pageIndex - 1) * this.query.pageSize
+            var i = (this.query.pageIndex - 1) * this.query.pageSize;
             this.axios.get(`/api/clubs/clubpage?pageSize=${this.query.pageSize}&pageNum=${i}`).then(res => {
                 this.clubs = res.data.data;
                 console.log(this.clubs);
             });
         },
         // 触发搜索按钮
-        handleSearch() {
-        },
+        handleSearch() {},
         // 删除操作
         handleDelete(index, row) {
             // 二次确认删除
@@ -193,6 +190,12 @@ export default {
         handlePageChange(val) {
             this.$set(this.query, 'pageIndex', val);
             this.getData();
+        },
+        news(id, name) {
+            this.$store.state.clubNews.clubId = id;
+            this.$store.state.clubNews.clubName = name;
+            console.log(this.$store.state.clubNews);
+            this.$router.push({ path: `/editor` });
         }
     }
 };

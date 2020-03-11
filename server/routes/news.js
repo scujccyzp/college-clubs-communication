@@ -8,4 +8,7 @@ router.get('/hotnews', newsCtrl.hotNews);
 //根据社团id获取新闻
 router.get('/clubnews', newsCtrl.clubNews);
 
+//存入新闻
+router.post('/edit', newsCtrl.editNews);
+
 module.exports = router;

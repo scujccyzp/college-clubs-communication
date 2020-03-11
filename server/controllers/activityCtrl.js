@@ -13,6 +13,18 @@ module.exports = {
       });
     });
   },
+  allActivity: (req, res) => {
+    activityModel.allActivity(req.query, (err, result) => {
+      if(err) return res.json({
+        msg: err,
+        state: "0" 
+      });
+      res.json({
+        state: "200",
+        data: result 
+      });
+    });
+  },
   clubActivity: (req, res) => {
     activityModel.clubActivity(req.query.clubId, (err, result) => {
       if(err) return res.json({

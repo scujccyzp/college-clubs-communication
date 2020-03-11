@@ -34,7 +34,7 @@
                         <el-image
                             class="table-td-thumb"
                             :src="$host + scope.row.user_avatar"
-                            :preview-src-list="[scope.row.thumb]"
+                            :preview-src-list="[$host + scope.row.user_avatar]"
                         ></el-image>
                     </template>
                 </el-table-column>
